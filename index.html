@@ -8,21 +8,22 @@
     <style>
       body {
         background-color: rgb(97, 97, 97);
-        height: 100vh;
-        width: 100wh;
       }
       #outer-container {
-        background-color: lightcoral;
-        height: 100%
+        /* background-color: lightcoral; */
+        height: 100vh;
       }
       #inner-container {
-        outline: 3px solid red;
-        background-color: aquamarine;
+        /* outline: 3px solid red; */
+        /* background-color: aquamarine; */
       }
       #gizmo-iframe {
+        /* postion, top, left attrs prevent scrollbars. not sure why. */
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 1024px;
         height: 680px;
-        background-color: blueviolet;
       }
     </style>
     <script>
@@ -40,6 +41,7 @@
         ></iframe>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+
+    <script type="module" src="/index.js"></script>
   </body>
 </html>

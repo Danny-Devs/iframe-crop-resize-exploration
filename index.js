@@ -1,19 +1,13 @@
-let iframe
-let outerContainer
-let innerContainer
+let iframe = document.getElementById('gizmo-iframe')
+let outerContainer = document.getElementById('outer-container')
+let innerContainer = document.getElementById('inner-container')
 
-window.addEventListener('DOMContentLoaded', () => {
-  iframe = document.getElementById('gizmo-iframe')
-  outerContainer = document.getElementById('outer-container')
-  innerContainer = document.getElementById('inner-container')
-  iframe.addEventListener('load', () => {
-    messageIframe({ messageName: 'loaded'})
-    resizeIframe()
-  })
+iframe.addEventListener('load', () => {
+  messageIframe({ messageName: 'loaded'})
+  resizeIframe()
 })
 
 window.addEventListener('resize', () => {
-  console.log('resize')
   resizeIframe()
 })
 
@@ -21,7 +15,8 @@ const defaultIframeWidth = 1024
 const defaultIframeHeight = 680
 const gizmoAR = defaultIframeWidth / defaultIframeHeight
 
-const resizeIframe = () => {  let newIframeHeight
+const resizeIframe = () => {  
+  let newIframeHeight
   let newIframeWidth
   let scale
 
@@ -66,7 +61,7 @@ const resizeIframe = () => {  let newIframeHeight
 }
 
 /* ------------ HELPERS ------------ */
-// helper utility
+// send message utility
 const messageIframe = (message) => {
   iframe.contentWindow.postMessage(message, '*')
 }
