@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      body {
+        background-color: rgb(97, 97, 97);
+        height: 100vh;
+        width: 100wh;
+      }
+      #outer-container {
+        background-color: lightcoral;
+        height: 100%
+      }
+      #inner-container {
+        outline: 3px solid red;
+        background-color: aquamarine;
+      }
+      #gizmo-iframe {
+        width: 1024px;
+        height: 680px;
+        background-color: blueviolet;
+      }
+    </style>
+    <script>
+
+    </script>
+  </head>
+  <body>
+    <div id="outer-container">
+      <div id="inner-container">
+        <iframe
+          id="gizmo-iframe"
+          src="/gizmo-component/gizmo.html"
+          frameborder="no"
+          scrolling="yes"
+        ></iframe>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
