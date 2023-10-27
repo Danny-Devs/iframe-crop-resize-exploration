@@ -1,3 +1,5 @@
+import './style.css'
+
 let cropAssistant = document.getElementById('crop-assistant')
 let cropPositioning = document.getElementById('crop-positioning')
 let snipBtn = document.getElementById('snip-btn')
