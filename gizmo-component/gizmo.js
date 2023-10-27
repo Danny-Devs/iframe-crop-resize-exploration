@@ -2,6 +2,7 @@ import './style.css'
 
 let cropAssistant = document.getElementById('crop-assistant')
 let cropPositioning = document.getElementById('crop-positioning')
+let xyReadout = document.getElementById('xy-readout')
 let snipBtn = document.getElementById('snip-btn')
 let snipMode = false
 
@@ -23,6 +24,15 @@ const cropTopLeft = (e) => {
   }
 }
 
+const cropBottomRight = (e) => {
+  if (snipMode && e.getModifierState('Alt')) {
+    console.log('cropBottomRight')
+    cropPositioning.style.width = `${e.clientX}px`
+    cropPositioning.style.height = `${e.clientY}px`
+    console.log('cropPositioning', cropPositioning)
+  }
+}
+
 const toggleSnipMode = () => {
   snipMode = !snipMode
   if (snipMode) {
@@ -40,6 +50,10 @@ const toggleSnipMode = () => {
 
 window.addEventListener('message', helperMessageHandler, false)
 window.addEventListener('click', cropTopLeft)
+window.addEventListener('click', cropBottomRight)
+window.addEventListener('mousemove', (e) => {
+  xyReadout.innerText = `${e.clientX}, ${e.clientY}`
+})
 snipBtn.addEventListener('click', toggleSnipMode)
 /* ------------ HELPERS ------------ */
 // send message utility

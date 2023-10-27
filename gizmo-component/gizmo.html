@@ -3,25 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
     <title>Gizmo loader</title>
     <style>
       #gizmo {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 1024px;
         height: 680px;
-        outline: 3px dotted pink;
         background-image: url('/1024_680_cat.jpeg');
       }
-      #snip-btn {
+      #crop-positioning {
         position: absolute;
-        bottom: 0;
-        right: 0;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        padding: 10px 20px;
-        background-color: white;
-        color: red;
-        border: none;
+        left: 0;
+        top: 0;
+        width: 1024px;
+        height: 680px;
+        /* necessary to hide cropped bottom/right part */
+        overflow: hidden;
+      }
+      #crop-assistant {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1024px;
+        height: 680px;
+        /* hide cropped top/left part */
+        overflow: hidden;
       }
     </style>
   </head>
@@ -32,6 +40,7 @@
       </div>
     </div>
 
+    <p id="xy-readout"></p>
     <button id="snip-btn">OFF</button>
     <script type="module" src="/gizmo-component/gizmo.js"></script>
   </body>
