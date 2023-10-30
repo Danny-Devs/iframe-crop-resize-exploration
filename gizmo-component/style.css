@@ -35,6 +35,18 @@ img {
   border: none;
 }
 
+#scale-up-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  color: red;
+  border: none;
+}
+
 #xy-readout {
   position: absolute;
   bottom: 10px;

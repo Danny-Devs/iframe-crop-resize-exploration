@@ -10,6 +10,13 @@ iframe.addEventListener('load', () => {
 window.addEventListener('resize', () => {
   resizeIframe()
 })
+window.addEventListener('message', (event) => {
+  switch (event.data.messageName) {
+    default:
+      console.log('index.js: unknown message', e.data)
+  }
+})
+
 
 const defaultIframeWidth = 1024
 const defaultIframeHeight = 680
@@ -27,34 +34,22 @@ const resizeIframe = () => {
     newIframeHeight = outerContainerHeight
     scale = newIframeHeight / defaultIframeHeight
     newIframeWidth = newIframeHeight * gizmoAR
-    const transform = `translate(-${defaultIframeWidth / 2}px,-${
-      defaultIframeHeight / 2
-    }px) scale(${scale},${scale}) translate(${defaultIframeWidth / 2}px,${
-      defaultIframeHeight / 2
-    }px)`
-    iframe.style.transform = transform
+    iframe.style.transformOrigin = '0 0'
+    iframe.style.transform = `scale(${scale})`
     innerContainer.style.width = `${newIframeWidth}px`
     innerContainer.style.height = `${newIframeHeight}px`
   } else if (outerContainerWidth / outerContainerHeight < gizmoAR) {
     newIframeWidth = outerContainerWidth
     scale = newIframeWidth / defaultIframeWidth
     newIframeHeight = newIframeWidth / gizmoAR
-    const transform = `translate(-${defaultIframeWidth / 2}px,-${
-      defaultIframeHeight / 2
-    }px) scale(${scale},${scale}) translate(${defaultIframeWidth / 2}px,${
-      defaultIframeHeight / 2
-    }px)`
-    iframe.style.transform = transform
+    iframe.style.transformOrigin = '0 0'
+    iframe.style.transform = `scale(${scale})`
     innerContainer.style.width = `${newIframeWidth}px`
     innerContainer.style.height = `${newIframeHeight}px`
   } else {
     scale = 1
-    const transform = `translate(-${defaultIframeWidth / 2}px,-${
-      defaultIframeHeight / 2
-    }px) scale(${scale},${scale}) translate(${defaultIframeWidth / 2}px,${
-      defaultIframeHeight / 2
-    }px)`
-    iframe.style.transform = transform
+    iframe.style.transformOrigin = '0 0'
+    iframe.style.transform = `scale(${scale})`
     innerContainer.style.width = `${defaultIframeWidth}px`
     innerContainer.style.height = `${defaultIframeWidth}px`
   }
