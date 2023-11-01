@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gizmo loader</title>
     <style>
-      #gizmo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('/1024_680_cat.jpeg');
-      }
-      #crop-positioning {
+      #crop-outer {
         position: absolute;
         left: 0;
         top: 0;
@@ -23,7 +15,7 @@
         overflow: hidden;
         /* border: 2px solid blue; */
       }
-      #crop-assistant {
+      #crop-inner {
         position: absolute;
         left: 0;
         top: 0;
@@ -33,11 +25,19 @@
         overflow: hidden;
         /* border: 2px solid red; */
       }
+      #gizmo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/1024_680_cat.jpeg');
+      }
     </style>
   </head>
   <body>
-    <div id="crop-positioning">
-      <div id="crop-assistant">
+    <div id="crop-outer">
+      <div id="crop-inner">
         <div id="gizmo"></div>
       </div>
     </div>

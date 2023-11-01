@@ -1,8 +1,7 @@
 import './style.css'
 
-const gizmo = document.getElementById('gizmo')
-const cropAssistant = document.getElementById('crop-assistant')
-const cropPositioning = document.getElementById('crop-positioning')
+const cropInner = document.getElementById('crop-inner')
+const cropOuter = document.getElementById('crop-outer')
 const xyReadout = document.getElementById('xy-readout')
 const scaleUpBtn = document.getElementById('scale-up-btn')
 const snipBtn = document.getElementById('snip-btn')
@@ -24,19 +23,19 @@ const helperMessageHandler = (event) => {
 
 const cropTopLeft = (e) => {
   if (snipMode && e.getModifierState('Shift')) {
-    // console.log('got here', cropAssistant)
+    // console.log('got here', cropInner)
     snippetX = e.clientX
     snippetY = e.clientY
-    cropAssistant.style.left = `-${e.clientX}px`
-    cropAssistant.style.top = `-${e.clientY}px`
+    cropInner.style.left = `-${e.clientX}px`
+    cropInner.style.top = `-${e.clientY}px`
   }
 }
 
 const cropBottomRight = (e) => {
   if (snipMode && e.getModifierState('Alt')) {
     // console.log('cropBottomRight')
-    cropPositioning.style.width = `${e.clientX}px`
-    cropPositioning.style.height = `${e.clientY}px`
+    cropOuter.style.width = `${e.clientX}px`
+    cropOuter.style.height = `${e.clientY}px`
     croppedWidth = e.clientX
     croppedHeight = e.clientY
     console.log(`cropped width: ${croppedWidth}px`, `cropped height: ${croppedHeight}px`)
@@ -46,9 +45,9 @@ const cropBottomRight = (e) => {
 const scaleUpSnippet = () => {    
   let newSnippetHeight
   let newSnippetWidth
-  let snippetAR = croppedWidth / croppedHeight
+  const snippetAR = croppedWidth / croppedHeight
   let scale
-
+  
   const defaultWidth = 1024
   const defaultHeight = 680
   const defaultAR = defaultWidth / defaultHeight
@@ -58,31 +57,31 @@ const scaleUpSnippet = () => {
     scale = newSnippetWidth / croppedWidth
     newSnippetHeight = newSnippetWidth / snippetAR
     
-    cropAssistant.style['transform-origin'] = `${snippetX}px ${snippetY}px`
-    cropAssistant.style.transform = `scale(${scale})`
+    cropInner.style['transform-origin'] = `${snippetX}px ${snippetY}px`
+    cropInner.style.transform = `scale(${scale})`
     
-    cropPositioning.style.width = `${newSnippetWidth}px`
-    cropPositioning.style.height = `${newSnippetHeight}px`
+    cropOuter.style.width = `${newSnippetWidth}px`
+    cropOuter.style.height = `${newSnippetHeight}px`
   } else if (snippetAR < defaultAR) {
     newSnippetHeight = defaultHeight
     scale = newSnippetHeight / croppedHeight
     newSnippetWidth = newSnippetHeight * snippetAR
 
-    cropAssistant.style['transform-origin'] = `${snippetX}px ${snippetY}px`
-    cropAssistant.style.transform = `scale(${scale})`
+    cropInner.style['transform-origin'] = `${snippetX}px ${snippetY}px`
+    cropInner.style.transform = `scale(${scale})`
 
-    cropPositioning.style.width = `${newSnippetWidth}px`
-    cropPositioning.style.height = `${newSnippetHeight}px`
+    cropOuter.style.width = `${newSnippetWidth}px`
+    cropOuter.style.height = `${newSnippetHeight}px`
   } else {
     newSnippetHeight = defaultHeight
     newSnippetWidth = defaultWidth
     scale = newSnippetHeight / croppedHeight
 
-    cropAssistant.style['transform-origin'] = `${snippetX}px ${snippetY}px`
-    cropAssistant.style.transform = `scale(${scale})`
+    cropInner.style['transform-origin'] = `${snippetX}px ${snippetY}px`
+    cropInner.style.transform = `scale(${scale})`
 
-    cropPositioning.style.width = `${newSnippetWidth}px`
-    cropPositioning.style.height = `${newSnippetHeight}px`
+    cropOuter.style.width = `${newSnippetWidth}px`
+    cropOuter.style.height = `${newSnippetHeight}px`
   }
 }
 

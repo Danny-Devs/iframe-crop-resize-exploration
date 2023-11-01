@@ -1,6 +1,8 @@
 let iframe = document.getElementById('gizmo-iframe')
 let outerContainer = document.getElementById('outer-container')
 let innerContainer = document.getElementById('inner-container')
+const indexReadout = document.getElementById('index-readout')
+
 
 iframe.addEventListener('load', () => {
   messageIframe({ messageName: 'loaded'})
@@ -60,3 +62,7 @@ const resizeIframe = () => {
 const messageIframe = (message) => {
   iframe.contentWindow.postMessage(message, '*')
 }
+
+window.addEventListener('mousemove', (e) => {
+  indexReadout.innerText = `indexX: ${e.clientX}, indexY: ${e.clientY}, window width: ${window.innerWidth}, window height: ${window.innerHeight}`
+})
